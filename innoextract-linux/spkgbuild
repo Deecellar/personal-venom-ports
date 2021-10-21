@@ -1,0 +1,19 @@
+# description	:  A tool to unpack installers created by Inno Setup 
+# homepage	: constexpr.org/innoextract/
+# depends	: boost xz-utils 
+
+name=innoextract-linux
+version=1.9
+release=1
+noextract=""
+backup=""
+source="https://github.com/dscharrer/innoextract/archive/refs/tags/1.9.tar.gz"
+
+build() {
+	ls
+	cd innoextract-$version
+	mkdir -p build && cd build
+	cmake ..
+	make
+	make DESTDIR=$PKG install
+}

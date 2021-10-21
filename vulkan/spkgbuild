@@ -1,0 +1,26 @@
+# description	: Vulkan SDK by LunarG
+# homepage	: https://vulkan.lunarg.com/sdk/home
+# depends	: 
+
+name=vulkan
+version=1.2.189.0
+release=1
+noextract=""
+backup=""
+source="https://sdk.lunarg.com/sdk/download/$version/linux/vulkansdk-linux-x86_64-$version.tar.gz"
+
+build() {
+	cd $version
+	mkdir -p $PKG/usr/bin
+	mkdir -p $PKG/usr/include/vulkan
+        mkdir -p $PKG/usr/lib 
+        mkdir -p $PKG/etc/vulkan/
+	mkdir -p $PKG/usr/local/vulkan/config
+	mkdir -p $PKG/usr/local/vulkan/sources
+	cp -r  x86_64/bin/* $PKG/usr/bin
+	cp -r  x86_64/include/vulkan/* $PKG/usr/include/vulkan
+	cp -r  x86_64/etc/vulkan/* $PKG/etc/vulkan/
+	cp -r source/* $PKG/usr/local/vulkan/sources
+	cp -r config/* $PKG/usr/local/vulkan/config
+
+}

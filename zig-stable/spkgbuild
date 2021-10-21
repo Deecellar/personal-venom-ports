@@ -1,0 +1,18 @@
+# description	: Zig Language Compiler / C Compiler / C++ Compiler 
+# homepage	: https://ziglang.org
+# depends	: llvm clang cmake lld
+
+name=zig-stable
+version=0.8.1
+release=1
+noextract=""
+backup=""
+source="https://ziglang.org/download/${version}/zig-${version}.tar.xz"
+
+build() {
+	cd zig-$version
+	mkdir build
+	cd build
+	cmake ..
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,16 @@
+# description	: LibFirm is a Graph Based SSA IR Library
+# homepage	: https://pp.ipd.kit.edu/firm/
+# depends	: cmake perl
+
+name=libfirm
+version=1.22.0
+release=1
+noextract=""
+backup=""
+source="https://github.com/libfirm/libfirm/archive/refs/heads/master.zip"
+
+build() {
+	ls
+	cd $name-master
+	make install DESTDIR=$PKG
+}
