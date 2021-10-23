@@ -1,0 +1,19 @@
+# description	: Fossil a distributed SCM for cathedral style developing
+# homepage	: https://www.fossil-scm.org
+# depends	: openssl zlib curl tcl
+
+
+name=fossil
+version=2.17
+release=1
+noextract=""
+backup=""
+source="https://www.fossil-scm.org/home/tarball/f48180f2ff3169651a725396d4f7d667c99a92873b9c3df7eee2f144be7a0721/fossil-src-2.17.tar.gz"
+
+build() {
+	ls
+	cd $name-src-$version
+	./configure --prefix=/usr --with-tcl=1 --with-tcl-private-stubs=1
+	make
+	make DESTDIR=$PKG install
+}
