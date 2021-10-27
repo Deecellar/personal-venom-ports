@@ -1,0 +1,18 @@
+# description	:  Linux application sandboxing and distribution framework 
+# homepage	: flatpak.org
+# depends	: bubblewrap libcap libarchive libxml2 libsoup gpgme polkit libXau json-glib appstream libseccomp autoconf automake librool bison gettext gtk-doc gobject ostree
+
+name=flatpak
+version=1.12.2
+release=1
+noextract=""
+backup=""
+source="https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
+
+build() {
+	cd $name-$version
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

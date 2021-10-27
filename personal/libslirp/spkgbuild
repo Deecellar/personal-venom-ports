@@ -1,0 +1,17 @@
+# description	: SLIRP
+# homepage	: 
+# depends	: meson glib2
+
+name=libslirp
+version=4.6.1
+release=1
+noextract=""
+backup=""
+source="https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.6.1/libslirp-v4.6.1.tar.gz"
+
+build() {
+	ls
+	cd $name-v$version
+	meson build -Dprefix=$PKG/usr
+	ninja -C build install 
+}

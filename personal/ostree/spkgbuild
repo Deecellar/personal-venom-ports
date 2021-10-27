@@ -1,0 +1,19 @@
+# description	:  Operating system and container binary deployment and upgrades 
+# homepage	: ostreedev.github.io/ostree/
+# depends	: 
+
+name=ostree
+version=2021.5
+release=1
+noextract=""
+backup=""
+source="https://github.com/ostreedev/ostree/releases/download/v$version/libostree-$version.tar.xz"
+
+build() {
+	ls
+	cd lib$name-$version
+	./autogen.sh NOCONFIGURE=1
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
