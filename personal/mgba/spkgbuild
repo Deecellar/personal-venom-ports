@@ -1,6 +1,6 @@
 # description	: GBA Emulator and debugger
 # homepage	: mgba.io
-# depends	: cmake pkg-config libzip ffmpeg 
+# depends	: cmake libzip ffmpeg 
 
 name=mgba
 version=0.9.2
