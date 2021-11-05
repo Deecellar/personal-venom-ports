@@ -1,0 +1,18 @@
+# description   : Zig Language Compiler / C Compiler / C++ Compiler
+# homepage      : https://ziglang.org
+# depends       : 
+name=zig
+version=0.9.0dev.1249+210ef5af8
+release=1
+noextract=""
+backup=""
+source="https://github.com/ziglang/zig-bootstrap/archive/refs/heads/master.tar.gz"
+
+build() {
+	cd zig-bootstrap-master
+	./build -j3 native-linux-gnu baseline
+	mkdir -p $PKG/usr/bin
+	cp out/zig-native-linux-gnu/zig $PKG/usr/bin/
+	mkdir -p $PKG/usr/lib
+	cp out/zig-native-linux-gnu/lib $PKG/usr/lib/ -r
+}
