@@ -1,0 +1,18 @@
+# description	: Subversion Source Control
+# homepage	: 
+# depends	: autoconf libtool sqlite apr apr-util libzip utf8proc
+
+name=svn
+version=1.14.1
+release=1
+noextract=""
+backup=""
+source="https://dlcdn.apache.org/subversion/subversion-$version.tar.gz"
+
+build() {
+	ls
+	cd subversion-$version
+	./configure
+	make
+	make DESTDIR=$PKG install
+}

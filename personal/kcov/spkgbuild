@@ -1,0 +1,19 @@
+# description	: Kcov is a test coverage tool
+# homepage	: 
+# depends	: binutils cmake elfutils python3
+
+name=kcov
+version=40
+release=1
+noextract=""
+backup=""
+source="https://github.com/SimonKagstrom/kcov/archive/refs/tags/pre-v$version.tar.gz"
+
+build() {
+	cd $name-pre-v40
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=$PKG/usr
+	make
+	make install
+}
