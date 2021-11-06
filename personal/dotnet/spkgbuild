@@ -11,5 +11,5 @@ source="https://download.visualstudio.microsoft.com/download/pr/6788a5a5-1879-40
 
 build() {
 	mkdir $PKG/usr/bin -p
-	cp $SRC/dotnet $PKG/usr/bin/dotnet
+	cp $SRC/* $PKG/usr/bin/ -r
 }
