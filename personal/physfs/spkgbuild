@@ -1,0 +1,19 @@
+# description	: Physfs physics library
+# homepage	: 
+# depends	: 
+
+name=physfs
+version=3.0.2
+release=1
+noextract=""
+backup=""
+source="https://github.com/icculus/physfs/archive/refs/tags/release-$version.tar.gz"
+
+build() {
+	cd $name-release-$version
+	mkdir build
+	cd build
+	cmake ..
+	make
+	make DESTDIR=$PKG install
+}

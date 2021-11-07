@@ -1,17 +1,17 @@
 # description	: MS Office Compatible Office Tools Opensource
 # homepage	: https://www.onlyoffice.com
-# depends	: 
+# depends	: python3 qt5 ca-certificates cmake curl git glib autoconf2.13 gtk3 pulseaudio alsa-lib p7zip glu libtool gzip cups dbus icu gstreamer gst-plugins-base libx11 libxcb libxi libxrender ncurses nodejs 
 
 name=onlyoffice
-version=6.3.1
+version=6.4.2
 release=1
-noextract="true"
+noextract=""
 backup=""
-source="https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/download/v$version/DesktopEditors-x86_64.AppImage"
+source="https://github.com/ONLYOFFICE/build_tools/archive/refs/tags/v7.0.0.36.tar.gz"
 
 build() {
-        mkdir -p $PKG/usr/bin
-        chmod +x DesktopEditors-x86_64.AppImage
-        mv DesktopEditors-x86_64.AppImage onlyoffice
-	mv onlyoffice $PKG/usr/bin
+	cd build_tools-7.0.0.36
+	python configure.py --branch master --module desktop --update 1
+	python make.py
+	 
 }
