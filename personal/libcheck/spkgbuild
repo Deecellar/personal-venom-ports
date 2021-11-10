@@ -1,0 +1,20 @@
+# description	: A unit testing framework for C
+# homepage	: https://github.com/libcheck/check
+# depends	: automake autoconf libtool pkg-config textinfo
+
+name=libcheck
+version=0.15.2
+release=2
+noextract=""
+backup=""
+source="https://github.com/libcheck/check/releases/download/$version/check-$version.tar.gz"
+
+build() {
+ls
+cd check-$version
+autoreconf --install
+./configure --prefix=$PKG/usr
+make
+make check
+make install
+}

@@ -1,0 +1,19 @@
+# description	: This project is a library for managing accounts which can be used from GLib
+applications. It is part of the accounts-sso project.
+# homepage	: https://gitlab.com/accounts-sso/libaccounts-glib
+# depends	: meson ninja sqlite libxml2 glib libcheck
+
+name=libaccounts-glib
+version=1.25
+release=1
+noextract=""
+backup=""
+source="https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/$version/libaccounts-glib-$version.tar.gz"
+
+build() {
+cd $name-$version
+	meson build --prefix=$PKG/usr
+cd build
+ninja
+
+}

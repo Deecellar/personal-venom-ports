@@ -1,0 +1,15 @@
+# description	: Add Podman Plugin to nomad
+# homepage	: 
+# depends	: nomad
+
+name=nomad-podman
+version=0.3.0
+release=1
+noextract=""
+backup=""
+source="https://releases.hashicorp.com/nomad-driver-podman/$version/nomad-driver-podman_{$version}_linux_amd64.zip"
+
+build() {
+	mkdir -p $PKG/opt/nomad/plugins
+	cp nomad-driver-podman $PKG/opt/nomad/plugins
+}

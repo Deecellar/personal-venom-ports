@@ -1,0 +1,5 @@
+nomad-podman-0.3.0-1
+drwxr-xr-x root/root    opt/
+drwxr-xr-x root/root    opt/nomad/
+drwxr-xr-x root/root    opt/nomad/plugins/
+-rwxr-xr-x root/root    opt/nomad/plugins/nomad-driver-podman
