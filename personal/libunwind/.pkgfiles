@@ -1,0 +1,7 @@
+libunwind-13.0.0-1
+drwxr-xr-x root/root    usr/
+drwxr-xr-x root/root    usr/lib/
+-rw-r--r-- root/root    usr/lib/libunwind.a
+lrwxrwxrwx root/root    usr/lib/libunwind.so -> libunwind.so.1
+lrwxrwxrwx root/root    usr/lib/libunwind.so.1 -> libunwind.so.1.0
+-rwxr-xr-x root/root    usr/lib/libunwind.so.1.0
