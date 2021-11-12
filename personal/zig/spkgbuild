@@ -9,11 +9,14 @@ backup=""
 source="https://ziglang.org/builds/zig-0.9.0-dev.1622+71388b980.tar.xz"
 
 build() {
-	ls
 	cd $name-0.9.0-dev.1622+71388b980
 	mkdir build
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release ..
-	make install DESTDIR=$PKG
+	make install
+	mkdir $PKG/usr/ -p
+	cp -r $SRC/$name-0.9.0-dev.1622+71388b980/build/bin $PKG/usr/
+	cp -r $SRC/$name-0.9.0-dev.1622+71388b980/build/lib $PKG/usr/
+	
 	
 }

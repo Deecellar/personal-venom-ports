@@ -1,0 +1,16 @@
+# description   : Zig Language Compiler stage 2 / C Compiler / C++ Compiler
+# homepage      : https://ziglang.org
+# depends       : zig
+name=zig-stage2
+version=0.9.0dev.1622+71388b980
+release=1
+noextract=""
+backup=""
+source="https://ziglang.org/builds/zig-0.9.0-dev.1622+71388b980.tar.xz"
+
+build() {
+	echo "This compiler is in BETA, only install for dev purposes"
+	cd zig-0.9.0-dev.1622+71388b980
+	zig build --zig-lib-dir lib --prefix $PKG/usr/local/ -Denable-llvm
+	mv $PKG/usr/local/bin/zig $PKG/usr/local/bin/$name
+}
