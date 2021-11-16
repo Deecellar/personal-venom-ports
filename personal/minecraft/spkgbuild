@@ -1,0 +1,16 @@
+# description	: Minecraft launcher (Premium)
+# homepage	: https://www.minecraft.net/ 
+# depends	: openjdk-17-bin
+
+name=minecraft
+version=1.19.0
+release=1
+noextract=""
+backup=""
+source="https://launcher.mojang.com/download/Minecraft.tar.gz"
+
+build() {
+	cd $name-launcher
+	mkdir $PKG/usr/bin -p
+	cp $name-launcher $PKG/usr/bin
+}
