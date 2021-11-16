@@ -1,0 +1,18 @@
+# description	: pa-applet is a systray-applet that allows you to control some of PulseAudio's
+# homepage	: https://github.com/fernandotcl/pa-applet
+# depends	: glib gtk libnotify pulseaudio xlib autoconf automake pkg-config
+
+name=pa-applet
+version=0.01
+release=1
+noextract=""
+backup=""
+source="https://github.com/Deecellar/pa-applet/archive/refs/tags/$version.tar.gz"
+
+build() {
+	cd $name-$version
+	./autogen.sh
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
