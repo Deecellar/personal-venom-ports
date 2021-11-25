@@ -2,21 +2,21 @@
 # homepage      : https://ziglang.org
 # depends       : cmake llvm clang lld 
 name=zig
-version=0.9.0dev.1622+71388b980
-release=1
+version=0.9.0
+release=dev.1722+ed70f9981
 noextract=""
 backup=""
-source="https://ziglang.org/builds/zig-0.9.0-dev.1622+71388b980.tar.xz"
+source="https://ziglang.org/builds/zig-$version-$release.tar.xz"
 
 build() {
-	cd $name-0.9.0-dev.1622+71388b980
+	cd $name-$version-$release
 	mkdir build
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release ..
 	make install
 	mkdir $PKG/usr/ -p
-	cp -r $SRC/$name-0.9.0-dev.1622+71388b980/build/bin $PKG/usr/
-	cp -r $SRC/$name-0.9.0-dev.1622+71388b980/build/lib $PKG/usr/
+	cp -r $SRC/$name-$version-$release/build/bin $PKG/usr/
+	cp -r $SRC/$name-$version-$release/build/lib $PKG/usr/
 	
 	
 }
