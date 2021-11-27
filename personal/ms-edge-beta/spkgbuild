@@ -7,11 +7,11 @@ version=96.0.1054.34
 release=1
 noextract=""
 backup=""
-source="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_$version-$release_amd64.deb"
+source="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/microsoft-edge-beta_$version-${release}_amd64.deb"
 
 
 build() {
-	ar x microsoft-edge-beta_$version-$release_amd64.deb
+	ar x microsoft-edge-beta_$version-${release}_amd64.deb
 	tar xvf data.tar.xz
 	cp -r etc $PKG
 	cp -r opt $PKG
