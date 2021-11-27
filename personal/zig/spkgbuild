@@ -4,7 +4,7 @@
 
 name=zig
 version=0.9.0
-release=dev.1789+f0deeff1d7
+release=dev.1789+f0deef1d7
 noextract=""
 backup=""
 source="https://ziglang.org/builds/zig-$version-$release.tar.xz"
