@@ -1,0 +1,17 @@
+# description	: cifs tools for mounting SMB/CIFS shares on linux
+# homepage	: 
+# depends	: talloc
+
+name=cifs-utils
+version=6.14
+release=1
+noextract=""
+backup=""
+source="https://www.samba.org/ftp/linux-cifs/$name/$name-$version.tar.bz2"
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
