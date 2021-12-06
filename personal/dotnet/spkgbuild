@@ -3,11 +3,11 @@
 # depends	: 
 
 name=dotnet
-version=5.0
+version=6.0.100
 release=1
 noextract=""
 backup=""
-source="https://download.visualstudio.microsoft.com/download/pr/6788a5a5-1879-4095-948d-72c7fbdf350f/c996151548ec9f24d553817db64c3577/dotnet-sdk-5.0.402-linux-x64.tar.gz"
+source="https://download.visualstudio.microsoft.com/download/pr/17b6759f-1af0-41bc-ab12-209ba0377779/e8d02195dbf1434b940e0f05ae086453/dotnet-sdk-6.0.100-linux-x64.tar.gz"
 
 build() {
 	mkdir $PKG/usr/bin -p
