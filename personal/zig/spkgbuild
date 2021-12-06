@@ -4,7 +4,7 @@
 
 name=zig
 version=0.9.0
-release=dev.1789+f0deef1d7
+release=dev.1896+a1b79ea58
 noextract=""
 backup=""
 source="https://ziglang.org/builds/zig-$version-$release.tar.xz"
@@ -13,8 +13,8 @@ build() {
 	cd $name-$version-$release
 	mkdir build
 	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release ..
-	make install
+	cmake -G Ninja  -DCMAKE_BUILD_TYPE=Release ..
+	ninja install
 	mkdir $PKG/usr/ -p
 	cp -r $SRC/$name-$version-$release/build/bin $PKG/usr/
 	cp -r $SRC/$name-$version-$release/build/lib $PKG/usr/
