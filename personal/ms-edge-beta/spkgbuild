@@ -3,7 +3,7 @@
 # depends	: 
 
 name=ms-edge-beta
-version=96.0.1054.34
+version=97.0.1072.21
 release=1
 noextract=""
 backup=""
