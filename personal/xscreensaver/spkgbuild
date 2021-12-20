@@ -1,0 +1,23 @@
+# description	: x11 screensaver
+# homepage	: https://www.jwz.org/xscreensaver
+# depends	: perl pkg-config gettext intltool libx11 libxext libxi libxt
+# depends    : libxft libxinerama libxrandr libxxf86vm libgl libglu libgle
+# depends    : libgtk2 gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0 libxml2 libpam dbus libsystemd elogind
+
+name=xscreensaver
+version=6.02
+release=1
+noextract=""
+backup=""
+source="https://www.jwz.org/xscreensaver/xscreensaver-$version.tar.gz"
+
+build() {
+	export GTK_DATADIR="$PKG/usr/"
+	cd $name-$version
+	sed -i 's\GTK_DATADIR="$GTK_DATADIR/share"\GTK_DATADIR="${PKG}/usr/share"\g' configure
+    ./configure --prefix=$PKG/usr --datadir=$PKG/usr --with-app-defaults=$PKG/etc/X11/app-defaults --with-systemd=no
+    sed -i 's\/usr/share\${prefix}/share\g' driver/Makefile
+    sed -i 's\/usr/share\${prefix}/share\g' po/Makefile
+    make
+    make  DESTDIR=$PKG install
+}
