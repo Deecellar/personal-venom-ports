@@ -12,12 +12,10 @@ backup=""
 source="https://www.jwz.org/xscreensaver/xscreensaver-$version.tar.gz"
 
 build() {
-	export GTK_DATADIR="$PKG/usr/"
-	cd $name-$version
-	sed -i 's\GTK_DATADIR="$GTK_DATADIR/share"\GTK_DATADIR="${PKG}/usr/share"\g' configure
-    ./configure --prefix=$PKG/usr --datadir=$PKG/usr --with-app-defaults=$PKG/etc/X11/app-defaults --with-systemd=no
-    sed -i 's\/usr/share\${prefix}/share\g' driver/Makefile
-    sed -i 's\/usr/share\${prefix}/share\g' po/Makefile
+    export GTK_DATADIR="$PKG/usr/"
+    cd $name-$version
+    ./configure --prefix=$PKG/usr --datadir=$PKG/usr --with-systemd=no
     make
     make  DESTDIR=$PKG install
+   
 }

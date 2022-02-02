@@ -1,0 +1,20 @@
+# description	: emacs editor 
+# homepage	: 
+# depends	: 
+
+name=emacs
+version=27.2
+release=1
+noextract=""
+backup=""
+source="https://ftp.gnu.org/gnu/emacs/emacs-$version.tar.xz"
+
+build() {
+	cd $name-$version
+sed -e '/SIGSTKSZ/ s|^.*$|static max_align_t sigsegv_stack[\
+   (64 * 1024 + sizeof (max_align_t) - 1) / sizeof (max_align_t)];|' \
+    -i src/sysdep.c
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

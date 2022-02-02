@@ -1,0 +1,24 @@
+# description	: Steel Bank Common Lisp compiler and runtime
+# homepage	: http://www.sbcl.org/
+# depends	: 
+
+name=sbcl
+version=2.2.0
+release=1
+noextract=""
+backup=""
+source="http://prdownloads.sourceforge.net/sbcl/sbcl-2.2.0-source.tar.bz2"
+
+build() {
+    cd $SRC/$name-$version
+    export CFLAGS=$CFLAGS" -D_GNU_SOURCE -fno-omit-frame-pointer -DSBCL_HOME=/usr/lib/sbcl"
+    export GNUMAKE="make"
+    export LISP="ecl --shell"
+    # build system uses LINKFLAGS and OS_LIBS to build LDFLAGS
+    export LINKFLAGS="$LDFLAGS"
+    unset LDFLAGS
+    unset MAKEFLAGS
+    sh make.sh ecl --prefix=/usr --fancy --arch=x86-64 
+    make -C doc/manual info
+	INSTALL_ROOT=$PKG/usr sh install.sh 
+}

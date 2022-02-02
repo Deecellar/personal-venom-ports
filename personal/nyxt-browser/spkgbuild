@@ -1,0 +1,19 @@
+# description	: A keyboard based browser for hackers
+# homepage	: https://nyxt.atlas.engineer/
+# depends	: enchant glib-networking gobject-instrospection gsettings-desktop-schemas webkitgtk gstreamer gstreamer-plugins-base
+# depends    : gst-plugins-bad gst-plugins-good gst-plugins-ugly
+	
+name=nyxt-browser
+version=2.2.4
+release=1
+noextract=""
+backup=""
+source="https://github.com/atlas-engineer/nyxt/releases/download/$version/nyxt-$version-source-with-submodules.tar.xz"
+
+build() {
+	ls
+	cd nyxt-$sourec
+	make all
+	make PREFIX=/usr DESTDIR=$PKG install
+	./configure --prefix=/usr
+}

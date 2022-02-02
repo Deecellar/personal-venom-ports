@@ -1,0 +1,25 @@
+# description	: Maria Database server
+# homepage	: https://mariadb.com
+# depends	: bison ncurses zlib libevent cmake gnutls jemalloc curl gzip
+
+name=mariadb
+version=10.6.5
+release=1
+noextract=""
+backup=""
+source="https://mirror.insacom.cl/mariadb/mariadb-$version/source/mariadb-$version.tar.gz"
+
+build() {
+	cd $name-$version
+	mkdir build 
+	cd build
+	cmake ..  -DCMAKE_PREFIX_PATH=$PKG/usr/ \
+	-DPLUGIN_CONNECT_ODBC=AUTO -DPLUGIN_CONNECT_JDBC=AUTO  
+	make DESTDIR=$PKG install
+	groupadd mysql
+	useradd -g mysql mysql
+	./$PKG/mysql/scripts/mysql_install_db --user=mysql
+	chown -R mysql $PKG/usr/mysql/
+	chgrp -R mysql $PKG/usr/mysql
+	
+}

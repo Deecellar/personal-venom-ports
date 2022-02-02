@@ -1,0 +1,17 @@
+# description	: nsis instalelr
+# homepage	: 
+# depends	: python3 zlib 
+
+name=nsis
+version=3.08
+release=1
+noextract=""
+backup=""
+source="https://netactuate.dl.sourceforge.net/project/nsis/NSIS%203/3.08/nsis-$version-src.tar.bz2"
+
+build() {
+	CXX="clang"
+	CC="clang"
+	cd $name-$version-src
+	scons SKIPSTUBS=all SKIPPLUGINS=all SKIPUTILS=all SKIPMISC=all NSIS_CONFIG_CONST_DATA_PATH=no install
+}

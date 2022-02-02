@@ -1,0 +1,20 @@
+# description	: A terminal image and video viewer.
+# homepage	: 
+# depends	: cmake pandoc-bin ffmpeg zlib libexif libjpeg pkg-config 
+
+name=timg
+version=1.4.2
+release=1
+noextract=""
+backup=""
+source="https://github.com/hzeller/timg/archive/refs/tags/v$version.tar.gz"
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd build
+	cmake ../ -DWITH_VIDEO_DECODING=On
+	make
+	make DESTDIR=$PKG/usr install
+}
+

@@ -1,0 +1,15 @@
+# description	: Blender is a 3D Tool Suite 100% Open Sources, 100% Free with modeling, animating, etc
+# homepage	: https://www.blender.org/
+# depends	: x11 libxcursor libxrandr libxinerama glew libxi libxxf86vm
+
+name=blender-bin
+version=3.0.0
+release=1
+noextract=""
+backup=""
+source="https://mirror.clarkson.edu/blender/release/Blender3.0/blender-3.0.0-linux-x64.tar.xz"
+build() {
+	ls
+	cd blender-$version-linux-x64
+	mv * $PKG/usr/ -r
+}

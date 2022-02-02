@@ -1,0 +1,10 @@
+koruri-20210720-1
+drwxr-xr-x root/root    usr/
+drwxr-xr-x root/root    usr/share/
+drwxr-xr-x root/root    usr/share/fonts/
+drwxr-xr-x root/root    usr/share/fonts/koruri/
+-rw-r--r-- root/root    usr/share/fonts/koruri/Koruri-Bold.ttf
+-rw-r--r-- root/root    usr/share/fonts/koruri/Koruri-Extrabold.ttf
+-rw-r--r-- root/root    usr/share/fonts/koruri/Koruri-Light.ttf
+-rw-r--r-- root/root    usr/share/fonts/koruri/Koruri-Regular.ttf
+-rw-r--r-- root/root    usr/share/fonts/koruri/Koruri-Semibold.ttf

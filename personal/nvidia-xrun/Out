@@ -1,0 +1,10 @@
+Waking up nvidia GPU
+ON
+Loading nvidia module
+Loading nvidia_drm module
+Unloading nvidia_drm module
+Unloading nvidia_modeset module
+Unloading nvidia module
+Turning off nvidia GPU
+OFF
+Current state of nvidia GPU: 

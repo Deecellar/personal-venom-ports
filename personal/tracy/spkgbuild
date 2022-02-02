@@ -1,0 +1,15 @@
+# description	: Tracy Frame Profiler 
+# homepage	: https://github.com/wolfpld/tracy
+# depends	: glfw freetype2 capstone gtk3
+
+name=tracy
+version=0.7.8
+release=1
+source="https://github.com/wolfpld/tracy/archive/refs/tags/v$version.tar.gz"
+
+build() {
+	cd $name-$version
+	cd profiler/build/unix
+	make
+	make install DESTDIR=$PKG/usr
+}

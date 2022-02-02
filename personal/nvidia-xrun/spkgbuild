@@ -1,0 +1,25 @@
+# description	: NVIDIA helper to run desktops
+# homepage	: 
+# depends	: nvidia
+
+name=nvidia-xrun
+version=0.3
+release=1
+noextract=""
+backup=""
+source="https://github.com/Witko/nvidia-xrun/archive/refs/tags/$version.tar.gz"
+
+build() {
+	cd $name-$version
+	rm LICENSE README.md .gitignore
+	mkdir -p $PKG/usr/bin
+	mkdir -p $PKG/etc/X11/
+	mkdir -p $PKG/etc/X11/nvidia-xorg.conf.d
+	mkdir -p $PKG/usr/share/X11/nvidia-xorg.conf.d
+	chmod a+x nvidia-xrun
+	chmod a+x nvidia-xinitrc
+	chmod +777 nvidia-xorg.conf
+	cp nvidia-xrun $PKG/usr/bin/ 
+	cp nvidia-xorg.conf $PKG/etc/X11/
+	cp nvidia-xinitrc $PKG/etc/X11/
+}

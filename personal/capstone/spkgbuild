@@ -1,0 +1,19 @@
+# description	: DISASM engine in C
+# homepage	: 
+# depends	: 
+
+name=capstone
+version=4.0.2
+release=1
+noextract=""
+backup=""
+source="https://github.com/capstone-engine/capstone/archive/refs/tags/$version.tar.gz"
+
+build() {
+	cd $name-$version
+	mkdir build
+	cd build
+	cmake .. -DCMAKE_INSTALL_PREFIX=$PKG/usr -G Ninja -DCMAKE_BUILD_TYPE="Release"
+	ninja
+	ninja install
+}

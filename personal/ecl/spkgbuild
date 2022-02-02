@@ -1,0 +1,17 @@
+# description	: Embeded Implementation of common lisp
+# homepage	: 
+# depends	: 
+
+name=ecl
+version=21.2.1
+release=1
+noextract=""
+backup=""
+source="https://common-lisp.net/project/ecl/static/files/release/ecl-$version.tgz"
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

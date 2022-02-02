@@ -1,18 +1,21 @@
-# description	: Zig Language Compiler / C Compiler / C++ Compiler 
-# homepage	: https://ziglang.org
-# depends	: 
+# description   : Zig Language Compiler / C Compiler / C++ Compiler
+# homepage      : https://ziglang.org
+# depends       : cmake llvm clang lld 
 
 name=zig-stable
-version=0.8.1
+version=0.9.0
 release=1
 noextract=""
 backup=""
-source="https://ziglang.org/download/${version}/zig-linux-x86_64-${version}.tar.xz"
+source="https://ziglang.org/downloads/$version/zig-$version.tar.xz"
 
 build() {
-	ls
-	cd zig-linux-x86_64-$version
-	mkdir -p $PKG/usr/bin
-	mv zig zig-stable
-	cp -r zig-stable $PKG/usr/bin
+	cd zig-$version
+	mkdir build
+	cd build
+	cmake -G Ninja  -DCMAKE_BUILD_TYPE=Release ..
+	ninja install
+	mkdir $PKG/usr/ -p
+	cp -r $SRC/zig-$version/build/bin $PKG/usr/
+	cp -r $SRC/zig-$version/build/lib $PKG/usr/
 }

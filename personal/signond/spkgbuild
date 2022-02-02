@@ -1,0 +1,17 @@
+# description	: The SignOn daemon is a D-Bus service which performs user authentication on behalf of its clients. There are currently authentication plugins for OAuth 1.0 and 2.0, SASL, Digest-MD5, and plain username/password combination.
+# homepage	: 
+# depends	: qt5 
+
+name=signond
+version=8.60
+release=1
+noextract=""
+backup=""
+source="https://gitlab.com/accounts-sso/signond/-/archive/VERSION_$version/signond-VERSION_$version.tar.gz"
+
+build() {
+	cd $name-VERSION_$version 
+	qmake PREFIX=$PKG/usr
+	make
+	make install -i
+}

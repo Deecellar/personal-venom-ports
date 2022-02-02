@@ -1,0 +1,19 @@
+# description	: supercollider is a synthesis platform 
+# homepage	: https://supercollider.github.io/
+# depends	: libxt jack libsndfile fftw cmake git alsa libgudev readline ncurses qtwebengine	
+
+name=supercollider
+version=3.12.1
+release=1
+noextract=""
+backup=""
+source="https://github.com/supercollider/supercollider/releases/download/Version-$version/SuperCollider-$version-Source.tar.bz2"
+
+build() {
+	cd SuperCollider-$version-Source
+	mkdir build
+	cd build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PKG/usr/ -DSC_QT=OFF  NATIVE=ON   ..
+	make
+    make install
+}

@@ -1,0 +1,18 @@
+# description	: Koruri	 fonts for the jp charset
+# depends	: fontconfig
+
+name=koruri
+version=20210720
+release=1
+noextract=""
+backup=""
+source="https://github.com/Koruri/Koruri/releases/download/$version/Koruri-$version.tar.xz"
+
+build() {
+	install -Dm644 Koruri-Light.ttf   -t $PKG/usr/share/fonts/$name
+	install -Dm644 Koruri-Regular.ttf -t $PKG/usr/share/fonts/$name
+	install -Dm644 Koruri-Semibold.ttf  -t $PKG/usr/share/fonts/$name
+	install -Dm644 Koruri-Bold.ttf    -t $PKG/usr/share/fonts/$name
+	install -Dm644 Koruri-Extrabold.ttf   -t $PKG/usr/share/fonts/$name
+   
+    }

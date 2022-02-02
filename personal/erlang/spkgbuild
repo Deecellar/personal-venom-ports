@@ -1,0 +1,18 @@
+# description	: Practical functional programming for a parallel world 
+# homepage	: https://www.erlang.org/
+# depends	: 
+
+name=erlang
+version=23.3.4.10
+release=1
+noextract=""
+backup=""
+source="https://github.com/erlang/otp/archive/refs/tags/OTP-$version.tar.gz"
+
+build() {
+	ls
+	cd otp-OTP-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

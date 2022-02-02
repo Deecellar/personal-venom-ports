@@ -1,0 +1,16 @@
+# description	: Crossplatform Windowing Library
+# homepage	: 
+# depends	: libxi libxcursor libxinerama libxrandr wayland libxkbcommon 
+name=glfw3
+version=3.3.6
+release=1
+source="https://github.com/glfw/glfw/releases/download/$version/glfw-$version.zip"
+
+build() {
+	cd glfw-$version
+	mkdir build
+	cd build
+    cmake -DCMAKE_INSTALL_PREFIX=$PKG/usr .. -G Ninja -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_EXAMPLES=OFF 
+	ninja
+	ninja install 
+}

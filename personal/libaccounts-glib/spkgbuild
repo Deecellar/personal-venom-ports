@@ -12,8 +12,8 @@ source="https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/$version/liba
 
 build() {
 cd $name-$version
-	meson build --prefix=$PKG/usr
+meson build --prefix=$PKG/usr
 cd build
-ninja
+ninja install
 
 }

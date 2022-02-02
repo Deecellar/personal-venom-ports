@@ -1,0 +1,116 @@
+# description	: Sonic Pi is a code-based music creation and performance tool.
+# homepage	: https://sonic-pi.net/
+# depends	: elixir qt ruby jack supercollider rtmidi ruby-ffi
+
+name=sonic-pi
+version=3.3.1
+release=1
+noextract=""
+backup=""
+source="https://github.com/sonic-pi-net/sonic-pi/archive/refs/tags/v$version.tar.gz"
+
+build() {
+  cd "$SRC/${name}-$version"
+  cd app
+  ./linux-prebuild.sh
+  ./linux-config.sh
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -B build \
+          -S .
+cd build
+make VERBOSE=1 -C .
+
+  cd "$SRC/${name}-$version"
+  # GUI executable
+  install -vDm 755 "app/build/gui/qt/${name}" "${PKG}/usr/bin/${name}"
+  # book
+  install -vDm 644 app/gui/qt/book/*.html \
+    -t "${PKG}/usr/share/${name}/book"
+  # i18n
+  install -vDm 644 app/gui/qt/lang/*.qm \
+    -t "${PKG}/usr/share/${name}/lang"
+  # help
+  install -vDm 644 app/gui/qt/help/*.html \
+    -t "${PKG}/usr/share/${name}/help"
+  # html
+  install -vDm 644 app/gui/qt/html/*.html \
+    -t "${PKG}/usr/share/${name}/html"
+  # images
+  install -vDm 644 app/gui/qt/images/*.png \
+    -t "${PKG}/usr/share/${name}/images"
+  install -vDm 644 app/gui/qt/images/coreteam/*.png \
+    -t "${PKG}/usr/share/${name}/images/coreteam"
+  install -vDm 644 app/gui/qt/images/toolbar/default/*.png \
+    -t "${PKG}/usr/share/${name}/images/toolbar/default"
+  install -vDm 644 app/gui/qt/images/toolbar/pro/*.png \
+    -t "${PKG}/usr/share/${name}/images/toolbar/pro"
+  install -vDm 644 etc/doc/images/tutorial/*.png \
+    -t "${PKG}/usr/share/${name}/images/tutorial"
+  # theme
+  install -vDm 644 app/gui/qt/theme/app.qss \
+    -t "${PKG}/usr/share/${name}/theme/"
+  install -vDm 644 app/gui/qt/theme/dark/doc-styles.css \
+    -t "${PKG}/usr/share/${name}/theme/dark"
+  install -vDm 644 app/gui/qt/theme/light/doc-styles.css \
+    -t "${PKG}/usr/share/${name}/theme/light"
+  # samples
+  install -vDm 644 etc/samples/*.{flac,md} \
+    -t "${PKG}/usr/share/${name}/samples"
+  # snippets
+  install -vDm 644 etc/snippets/fx/*.sps \
+    -t "${PKG}/usr/share/${name}/snippets/fx"
+  install -vDm 644 etc/snippets/live_loop/*.sps \
+    -t "${PKG}/usr/share/${name}/snippets/live_loop"
+  install -vDm 644 etc/snippets/syntax/*.sps \
+    -t "${PKG}/usr/share/${name}/snippets/syntax"
+  # synthdefs
+  install -vDm 644 etc/synthdefs/compiled/*.scsyndef \
+    -t "${PKG}/usr/share/${name}/synthdefs/compiled"
+  install -vDm 644 etc/synthdefs/designs/overtone/${name}/*.clj\
+    -t "${PKG}/usr/share/${name}/synthdefs/designs/overtone/"
+  install -vDm 644 etc/synthdefs/designs/overtone/${name}/src/sonic_pi/*.clj\
+    -t "${PKG}/usr/share/${name}/synthdefs/designs/overtone/sonic_pi/src"
+  install -vDm 644 etc/synthdefs/designs/overtone/${name}/test/sonic_pi/*.clj\
+    -t "${PKG}/usr/share/${name}/synthdefs/designs/overtone/sonic_pi/test"
+  # buffers
+  install -vDm 644 etc/buffers/rand-stream.wav \
+    -t "${PKG}/usr/share/${name}/buffers"
+  # docs
+  install -vDm 644 etc/doc/cheatsheets/*.md \
+    -t "${PKG}/usr/share/doc/${name}/cheatsheets"
+  # pdfs
+  install -vDm 644 etc/synthdefs/graphviz/pdf/*.pdf \
+    -t "${PKG}/usr/share/doc/${name}/synthdefs"
+  # tutorial
+  install -vDm 644 etc/doc/tutorial/*.md \
+    -t "${PKG}/usr/share/doc/${name}/tutorial"
+  # examples
+  install -vDm 644 etc/examples/algomancer/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/algomancer"
+  install -vDm 644 etc/examples/apprentice/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/apprentice"
+  install -vDm 644 etc/examples/illusionist/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/illusionist"
+  install -vDm 644 etc/examples/incubation/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/incubation"
+  install -vDm 644 etc/examples/magician/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/magician"
+  install -vDm 644 etc/examples/sorcerer/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/sorcerer"
+  install -vDm 644 etc/examples/wizard/*.rb \
+    -t "${PKG}/usr/share/doc/${name}/examples/wizard"
+  # erlang
+  install -vDm 755 app/server/erlang/*.beam \
+    -t "${PKG}/usr/lib/${name}"
+  # ruby
+  install -vdm 755 "${PKG}/usr/share/${name}"
+  cp -av app/server/ruby "${PKG}/usr/lib/${name}/server"
+  rm -vf "${PKG}/usr/lib/${name}/server/vendor/"*/ext/*.{o,c}
+  rm -vf "${PKG}/usr/lib/${name}/server/vendor/"*/ext/*/*.{o,c}
+  rm -vf "${PKG}/usr/lib/${name}/server/Rakefile"
+  rm -vf "${PKG}/usr/lib/${name}/server/vendor/"*/Rakefile
+  # xdg
+  # license
+  install -vDm 644 LICENSE.md "${PKG}/usr/share/licenses/${name}/LICENSE"
+}
+

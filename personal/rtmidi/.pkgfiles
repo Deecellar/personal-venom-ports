@@ -1,0 +1,18 @@
+rtmidi-5.0.0-1
+drwxr-xr-x root/root    var/
+drwxr-xr-x root/root    var/cache/
+drwxr-xr-x root/root    var/cache/scratchpkg/
+drwxr-xr-x root/root    var/cache/scratchpkg/work/
+drwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/
+drwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/pkg/
+drwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/pkg/include/
+drwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/pkg/include/rtmidi/
+-rw-r--r-- root/root    var/cache/scratchpkg/work/rtmidi/pkg/include/rtmidi/RtMidi.h
+-rw-r--r-- root/root    var/cache/scratchpkg/work/rtmidi/pkg/include/rtmidi/rtmidi_c.h
+drwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/
+-rw-r--r-- root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/librtmidi.a
+lrwxrwxrwx root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/librtmidi.so -> librtmidi.so.6.0.0
+lrwxrwxrwx root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/librtmidi.so.6 -> librtmidi.so.6.0.0
+-rwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/librtmidi.so.6.0.0
+drwxr-xr-x root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/pkgconfig/
+-rw-r--r-- root/root    var/cache/scratchpkg/work/rtmidi/pkg/lib/pkgconfig/rtmidi.pc

@@ -1,0 +1,19 @@
+# description	: The gptfdisk package is a set of programs for creation and maintenance of GUID Partition Table (GPT) disk drives
+# depends	: popt
+
+name=gdisk
+version=1.0.8
+release=1
+noextract=""
+backup=""
+source="https://downloads.sourceforge.net/gptfdisk/gptfdisk-1.0.8.tar.gz https://www.linuxfromscratch.org/patches/blfs/svn/gptfdisk-1.0.8-convenience-1.patch"
+
+build() {
+	ls
+	cd gptfdisk-$version
+	patch -Np1 -i ../gptfdisk-1.0.8-convenience-1.patch &&
+	sed -i 's|ncursesw/||' gptcurses.cc &&
+	sed -i 's|sbin|usr/sbin|' Makefile &&
+	make 
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,17 @@
+# description	: RTMidi
+# homepage	: 
+# depends	: 
+
+name=rtmidi
+version=5.0.0
+release=1
+noextract=""
+backup=""
+source="https://github.com/thestk/rtmidi/archive/refs/tags/$version.tar.gz"
+
+build() {
+	cd $name-$version
+	./autogen.sh --prefix=$PKG/usr
+	make
+	make install
+}
