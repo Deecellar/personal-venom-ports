@@ -1,9 +1,9 @@
-# description	: Microsoft Edge Browser Linux Version
-# homepage	: 
-# depends	: 
+# description	: Microsoft Edge is the fast and secure browser that helps you protect your data and save time and money.
+# homepage	: https://www.microsoft.com/en-us/edge
+# depends	: alsa gtk3 cups libdrm libxtst mesa nss imagemagick7 gnome-keyring 
 
 name=ms-edge
-version=97.0.1072.62
+version=98.0.1108.62
 release=1
 noextract=""
 backup=""
@@ -11,9 +11,6 @@ source="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-sta
 
 
 build() {
-	ar x microsoft-edge-stable_$version-${release}_amd64.deb
-	tar xvf data.tar.xz
-	cp -r etc $PKG
-	cp -r opt $PKG
-	cp -r usr $PKG
+	bsdtar -xf microsoft-edge-stable_${version}-${release}_amd64.deb
+	bsdtar -xf data.tar.xz -C $PKG
 }
