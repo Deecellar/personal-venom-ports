@@ -2,7 +2,7 @@
 # depends	: llvm libunwind clang
 
 name=lld
-version=13.0.0
+version=14.0.6
 release=1
 source="https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/lld-$version.src.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/libunwind-$version.src.tar.xz"
 
