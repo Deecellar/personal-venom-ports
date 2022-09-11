@@ -12,7 +12,7 @@ build() {
 	cd $name-$version-$release
 	mkdir build
 	cd build
-	cmake -G Ninja  -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr -DZIG_VERSION=$release -DZIG_STATIC_LLVM=ON -DZIG_STATIC_ZLIB=ON -DZIG_USE_CCACHE=ON 
+	cmake -G Ninja  -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr -DZIG_VERSION=$version-$release -DZIG_STATIC_LLVM=ON -DZIG_STATIC_ZLIB=ON -DZIG_USE_CCACHE=ON 
 	DESTDIR=$PKG ninja install
 	install_bin $SRC/zigcc 
 	install_bin $SRC/zigcxx
