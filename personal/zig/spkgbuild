@@ -4,7 +4,7 @@
 
 name=zig
 version=0.10.0
-release=dev.3672+cd5a9ba1f
+release=dev.3978+4fd4c733d
 source="https://ziglang.org/builds/zig-$version-$release.tar.xz zigcc zigcxx"
 
 build() {
@@ -12,7 +12,7 @@ build() {
 	cd $name-$version-$release
 	mkdir build
 	cd build
-	cmake -G Ninja  -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -G Ninja  -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_INSTALL_PREFIX=/usr -DZIG_VERSION=$release -DZIG_STATIC_LLVM=ON -DZIG_STATIC_ZLIB=ON -DZIG_USE_CCACHE=ON 
 	ninja
 	DESTDIR=$PKG ninja install
 	install_bin $SRC/zigcc 
