@@ -1,11 +1,11 @@
-# description	: Collection of modular and reusable compiler and toolchain technologies
+# description	: Fortran Compiler using LLVM IR
 # depends	: llvm libunwind clang
 
-name=lld
+name=flang
 version=15.0.1
 release=1
-source="https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/lld-$version.src.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/libunwind-$version.src.tar.xz
-		https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/cmake-$version.src.tar.xz"
+source="https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/flang-$version.src.tar.xz https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/libunwind-$version.src.tar.xz
+		https://github.com/llvm/llvm-project/releases/download/cmake-$version/llvm-$version.src.tar.xz"
 
 build() {
 	mv cmake-$version.src cmake
